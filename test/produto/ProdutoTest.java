@@ -19,24 +19,51 @@ public class ProdutoTest {
 	
 	@BeforeEach
 	public void inicializa() {
-		livro = new Produto("Introdução ao Teste de Software", 100.00);
+		livro = new Produto("Introduï¿½ï¿½o ao Teste de Software", 100.00);
 	}
 	
 	@Test
 	public void testCriaProduto() {
 		Assertions.assertAll("livro",
-				() -> assertEquals("Introdução ao Teste de Software", livro.getNome()),
+				() -> assertEquals("Introduï¿½ï¿½o ao Teste de Software", livro.getNome()),
 				() -> assertTrue(100.00 == livro.getPreco())						
 				);
 	}
 	
 	@Test
 	public void testProdutosIguais() {
-		Produto livro2 = new Produto("Introdução ao Teste de Software", 90.00);
+		Produto livro2 = new Produto("Introduï¿½ï¿½o ao Teste de Software", 90.00);
 		
 		assertNotSame(livro, livro2);
 		
 	}
+
+	@Test
+	public void testaGetNome() {
+		Produto filme = new Produto("Batman", 50.00);
+		assertEquals("Batman", filme.getNome());
+	}
+
+	@Test
+	public void testaSetNome() {
+    	Produto filme = new Produto("Batman", 50.00);
+    	filme.setNome("Superman");
+    	assertEquals("Superman", filme.getNome());
+	}
+
+	@Test
+	public void testaGetPreco() {
+    	Produto filme = new Produto("Batman", 50.00);
+    	assertEquals(50.00, filme.getPreco(), 0.01);
+	}
+
+	@Test
+	public void testaSetPreco() {
+    	Produto filme = new Produto("Batman", 50.00);
+    	filme.setPreco(75.50);
+    	assertEquals(75.50, filme.getPreco(), 0.01);
+	}
+
 	
 	@Test
 	public void assertionComHamcrestMatcher() {

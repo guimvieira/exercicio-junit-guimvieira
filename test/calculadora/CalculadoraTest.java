@@ -21,11 +21,25 @@ public class CalculadoraTest {
 		calc = new Calculadora();
 	}
 	
-	@DisplayName("Testa a soma de dois n�meros")
+	@DisplayName("Testa a soma de dois n�meros")
 	@Test
 	public void testSomaDoisNumeros() {
 		int soma = calc.soma(4, 5);		
 		Assertions.assertEquals(9, soma);		
+	}
+
+	@DisplayName("Testa a subtração de dois números")
+	@Test
+	public void testeSubtraiDoisNumeros() {
+		int subtracao = calc.subtracao(10, 3);
+		Assertions.assertEquals(7, subtracao);
+	}
+
+	@DisplayName("Testa a multiplicação de dois números")
+	@Test
+	public void testeMultiplicaDoisNumeros() {
+		int multiplicacao = calc.multiplicacao(5, 3);
+		Assertions.assertEquals(15, multiplicacao);
 	}
 	
 	@Test
@@ -38,7 +52,7 @@ public class CalculadoraTest {
 	public void testDivisaoPorZero() {
 		try {
 			int divisao = calc.divisao(8, 0);
-			fail("Exce��o n�o lan�ada");
+			fail("Exce��o n�o lan�ada");
 		}catch (ArithmeticException e) {
 			assertEquals("/ by zero", e.getMessage());
 		}		
@@ -48,6 +62,20 @@ public class CalculadoraTest {
 	public void testDivisaoPorZeroComAssertThrows() {
 		assertThrows(ArithmeticException.class,
 				() -> calc.divisao(8, 0));
+	}
+
+	@DisplayName("Testa o somatório de um número")
+	@Test
+	public void testeSomatorio() {
+		int somatorio = calc.somatoria(5);
+		assertEquals(15, somatorio);
+	}
+
+	@DisplayName("Testa se o número é positivo")
+	@Test
+	public void testeEhPositivo() {
+		boolean ehPositivo = calc.ehPositivo(3);
+		assertEquals(True, ehPositivo);
 	}
 
 }
